@@ -1,8 +1,6 @@
 # Kevins final 2nd year project
-
-To run the project do  <br/>
-
-### Backend
+Built using Laravel + inertia + react + tailwindcss <br/>
+### To run the project
 cd my final 2nd year project <br/>
 composer install <br/>
 npm i <br/>
