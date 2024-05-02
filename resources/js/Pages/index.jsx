@@ -5,7 +5,7 @@ const Home = () => {
       <>
         <Navbar />
         <p className='text-xl text-red-500'>Hello welcome to your first Inertia app!</p>
-        <p className='text-xl text-black-500'>Welcome to Your next people manigment app</p>
+        <p className='text-xl text-black-500'>Welcome to Your next people manigment app Manegy</p>
       </>
     )
   }

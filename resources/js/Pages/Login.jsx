@@ -1,5 +1,6 @@
 import Navbar from '../Components/Navbar'
-import { router } from '@inertiajs/react'
+import { router , Link } from '@inertiajs/react'
+import { useState } from 'react'
 const Home = () => {
 
     const [values, setValues] = useState({
@@ -24,6 +25,7 @@ const Home = () => {
     return (
         <>
             <Navbar />
+            <section className='grid justify-center content-center w-screen h-screen'>
             <form onSubmit={handleSubmit}>
                 <label for="email">
                     Email:
@@ -36,6 +38,8 @@ const Home = () => {
                 </label>
                 <button type="submit">Login</button>
             </form>
+            <Link href="/register" method="get" className="text-lg no-underline text-blue-700 hover:text-blue-900 ml-2">Don't have an account?</Link>
+            </section>
         </>
     )
 }
