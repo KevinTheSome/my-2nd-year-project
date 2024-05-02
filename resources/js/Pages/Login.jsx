@@ -8,37 +8,28 @@ const Home = () => {
         email: "",
     })
 
-    function handleChange(e) {
-        const key = e.target.id;
-        const value = e.target.value
-        setValues(values => ({
-            ...values,
-            [key]: value,
-        }))
-    }
-
     function handleSubmit(e) {
         e.preventDefault()
-        router.post('/users', values)
+        router.post('/login', values)
     }
 
     return (
         <>
             <Navbar />
             <section className='grid justify-center content-center w-screen h-screen'>
-            <form onSubmit={handleSubmit}>
-                <label for="email">
-                    Email:
-                    <input type="email" placeholder="email" name="email" value={values.email} onChange={handleChange} />
-                </label>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="email">
+                        Email:
+                        <input type="email" placeholder="email" name="email" value={values.email} onChange={(e) => setValues({ ...values, email: e.target.value })} />
+                    </label>
 
-                <label for="password">
-                    Password:
-                    <input type="text" placeholder="password" name="password" value={values.password} onChange={handleChange} />
-                </label>
-                <button type="submit">Login</button>
-            </form>
-            <Link href="/register" method="get" className="text-lg no-underline text-blue-700 hover:text-blue-900 ml-2">Don't have an account?</Link>
+                    <label htmlFor="password">
+                        Password:
+                        <input type="password" placeholder="password" name="password" value={values.password} onChange={(e) => setValues({ ...values, password: e.target.value })} />
+                    </label>
+                    <button type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Login</button>
+                </form>
+                <Link href="/register" method="get" className="text-lg no-underline text-blue-700 hover:text-blue-900 ml-2">Don't have an account?</Link>
             </section>
         </>
     )

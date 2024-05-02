@@ -6,6 +6,7 @@ const Home = () => {
     const [values, setValues] = useState({
         name: "",
         password: "",
+        password_confirmation: "",
         email: "",
     })
 
@@ -20,7 +21,7 @@ const Home = () => {
 
     function handleSubmit(e) {
         e.preventDefault()
-        router.post('/users', values)
+        router.post('/register', values)
     }
 
     return (
@@ -28,23 +29,27 @@ const Home = () => {
             <Navbar />
             <section className='grid justify-center content-center w-screen h-screen'>
                 <form onSubmit={handleSubmit}>
-
-                <label for="name">
-                        name:
-                        <input type="text" placeholder="name" name="name" value={values.name} onChange={handleChange} />
+                <label htmlFor="name">
+                        Name:
+                        <input type="text" placeholder="name" name="name" value={values.name} onChange={(e) => setValues({ ...values, name: e.target.value })} />
                     </label>
 
-                    <label for="email">
+                    <label htmlFor="email">
                         Email:
-                        <input type="text" placeholder="email" name="email" value={values.email} onChange={handleChange} />
+                        <input type="text" placeholder="email" name="email" value={values.email} onChange={(e) => setValues({ ...values, email: e.target.value })} />
                     </label>
 
-                    <label for="password">
+                    <label htmlFor="password">
                         Password:
-                        <input type="text" placeholder="password" name="password" value={values.password} onChange={handleChange} />
+                        <input type="password" placeholder="password" name="password" value={values.password} onChange={(e) => setValues({ ...values, password: e.target.value })} />
                     </label>
 
-                    <button type="submit">Login</button>
+                    <label htmlFor="password_confirmation">
+                        Password confirmation:
+                        <input type="password" placeholder="password confirmation" name="password_confirmation" value={values.password_confirmation} onChange={(e) => setValues({ ...values, password_confirmation: e.target.value })} />
+                    </label>
+
+                    <button type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Register</button>
                 </form>
                 <Link href="/login" method="get" className="text-lg no-underline text-blue-700 hover:text-blue-900 ml-2">Already have an account?</Link>
             </section>
