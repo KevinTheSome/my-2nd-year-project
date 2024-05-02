@@ -5,19 +5,21 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardConntroler;
 
 
 Route::inertia('/', 'index');
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::inertia('/register', 'register');
+    Route::inertia('/register', 'Register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
-    Route::inertia('/login', 'login');
+    Route::inertia('/login', 'Login');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
     
 });
  
 Route::group(['middleware' => 'auth'], function () {
+    Route::inertia('/dashboard', 'Dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
