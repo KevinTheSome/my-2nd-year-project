@@ -15,4 +15,3 @@ class person extends Model
         'sex',
     ];
 }
-    

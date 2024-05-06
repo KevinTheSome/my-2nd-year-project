@@ -19,7 +19,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
  
 Route::group(['middleware' => 'auth'], function () {
-    Route::inertia('/dashboard', 'Dashboard');
+    Route::get('/dashbord', [DashboardConntroler::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 

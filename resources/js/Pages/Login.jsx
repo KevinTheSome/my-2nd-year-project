@@ -1,8 +1,8 @@
 import Navbar from '../Components/Navbar'
-import { router , Link } from '@inertiajs/react'
+import { router , Link, usePage } from '@inertiajs/react'
 import { useState } from 'react'
 const Home = () => {
-
+    const {errors} = usePage().props;
     const [values, setValues] = useState({
         password: "",
         email: "",
@@ -12,6 +12,8 @@ const Home = () => {
         e.preventDefault()
         router.post('/login', values)
     }
+
+    console.log(errors)
 
     return (
         <>
@@ -27,12 +29,17 @@ const Home = () => {
                         Password:
                         <input type="password" placeholder="password" name="password" value={values.password} onChange={(e) => setValues({ ...values, password: e.target.value })} />
                     </label>
+
+                    <p className='text-red-500'>{errors.email ?? ''}</p>
+
                     <button type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Login</button>
                 </form>
+
                 <Link href="/register" method="get" className="text-lg no-underline text-blue-700 hover:text-blue-900 ml-2">Don't have an account?</Link>
             </section>
         </>
     )
 }
+
 
 export default Home

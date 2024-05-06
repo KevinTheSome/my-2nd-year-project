@@ -1,8 +1,9 @@
 import Navbar from '../Components/Navbar'
-import { router , Link } from '@inertiajs/react'
+import { router , Link, usePage } from '@inertiajs/react'
 import { useState } from 'react'
 const Home = () => {
 
+    const {errors} = usePage().props;
     const [values, setValues] = useState({
         name: "",
         password: "",
@@ -23,6 +24,8 @@ const Home = () => {
         e.preventDefault()
         router.post('/register', values)
     }
+
+    console.log(errors);
 
     return (
         <>
@@ -49,6 +52,9 @@ const Home = () => {
                         <input type="password" placeholder="password confirmation" name="password_confirmation" value={values.password_confirmation} onChange={(e) => setValues({ ...values, password_confirmation: e.target.value })} />
                     </label>
 
+                    <p className='text-red-500'>{errors.name ?? ''}</p>
+                    <p className='text-red-500'>{errors.email ?? ''}</p>
+                    <p className='text-red-500'>{errors.password ?? ''}</p>
                     <button type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Register</button>
                 </form>
                 <Link href="/login" method="get" className="text-lg no-underline text-blue-700 hover:text-blue-900 ml-2">Already have an account?</Link>
