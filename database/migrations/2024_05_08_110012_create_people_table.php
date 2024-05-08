@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('person_tabel', function (Blueprint $table) {
+        Schema::create('people', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->dateTime('Arrived_at');
+            $table->dateTime('Left_at')->nullable(true);
             $table->string('first_name');
             $table->string('last_name');
-            $table->enum('sex' , ['Male', 'Female']);
+            $table->enum('sex', ['Male','Femail','Transgender','Helihopter']);
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('person_tabel');
+        Schema::dropIfExists('people');
     }
 };

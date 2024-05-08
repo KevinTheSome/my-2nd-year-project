@@ -1,5 +1,19 @@
 import Saidbar from '../Components/Saidbar'
+import { router , Link, usePage } from '@inertiajs/react'
+import { useState } from 'react'
+
 const Dashboard = () => {
+
+  const [addPerson, setAddPerson] = useState({
+    "first_name": "",
+    "last_name": "",
+    "sex": "",
+  });
+
+  function addperson(e) {
+    e.preventDefault()
+    router.post('/login', addPerson)
+  }
 
     return (
       <>
@@ -7,12 +21,14 @@ const Dashboard = () => {
           <Saidbar />
 
           <section>
-          <form action="">
-            <input type="text" placeholder="first name" />
-            <input type="text" placeholder="last name" />
-            <select name="sex" id="sex">
-              <option value="male">male</option>
-              <option value="femail">female</option>
+          <form onSubmit={addPerson}>
+            <input type="text" placeholder="first name"  value={addPerson.first_name} onChange={(e) => setAddPerson({ ...values, first_name: e.target.value })}/>
+            <input type="text" placeholder="last name" value={addPerson.last_name} onChange={(e) => setAddPerson({ ...values, last_name: e.target.value })}/>
+            <select name="sex" id="sex" value={addPerson.sex}>
+              <option value="male">Male</option>
+              <option value="femail">Femail</option>
+              <option value="femail">Transgender</option>
+              <option value="femail">Helihopter</option>
             </select>
             <button type="submit">Add</button>
           </form>

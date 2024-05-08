@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardConntroler;
 
@@ -20,6 +19,7 @@ Route::group(['middleware' => 'guest'], function () {
  
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashbord', [DashboardConntroler::class, 'dashboard'])->name('dashboard');
+    Route::post('/dashbord', [DashboardConntroler::class, 'addPerson'])->name('addPerson');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
