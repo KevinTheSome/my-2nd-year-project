@@ -1,5 +1,5 @@
 import Navbar from '../Components/Navbar'
-import { router , Link, usePage } from '@inertiajs/react'
+import { router , Link, usePage , Head } from '@inertiajs/react'
 import { useState } from 'react'
 const Home = () => {
     const {errors} = usePage().props;
@@ -17,6 +17,7 @@ const Home = () => {
 
     return (
         <>
+            <Head title="Login" />
             <Navbar />
             <section className='grid justify-center content-center w-screen h-screen'>
                 <form onSubmit={handleSubmit}>

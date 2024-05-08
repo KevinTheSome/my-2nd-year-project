@@ -18,8 +18,10 @@ Route::group(['middleware' => 'guest'], function () {
 });
  
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashbord', [DashboardConntroler::class, 'dashboard'])->name('dashboard');
-    Route::post('/dashbord', [DashboardConntroler::class, 'addPerson'])->name('addPerson');
+    Route::get('/dashboard', [DashboardConntroler::class, 'dashboard'])->name('dashboard');
+    Route::post('/dashboard/add', [DashboardConntroler::class, 'addPerson'])->name('addPerson');
+    Route::post('/dashboard/inbuilding', [DashboardConntroler::class, 'inbuilding'])->name('inbuilding');
+    Route::post('/dashboard/leave', [DashboardConntroler::class, 'leave'])->name('leave');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 

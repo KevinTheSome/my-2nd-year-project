@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->dateTime('Arrived_at');
-            $table->dateTime('Left_at')->nullable(true);
+            $table->dateTime('Left_at')->default(date('Y-m-d H:i:s', 0));
             $table->string('first_name');
             $table->string('last_name');
             $table->enum('sex', ['Male','Femail','Transgender','Helihopter']);
