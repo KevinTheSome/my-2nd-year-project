@@ -29,6 +29,7 @@ class DashboardConntroler extends Controller
         $Person = new Person();
         $Person->first_name = $request->input('first_name');
         $Person->last_name = $request->input('last_name');
+        $Person->Arrived_at = date('Y-m-d H:i:s');
         $Person->sex = $request->input('sex');
         $Person->save();
 
