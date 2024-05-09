@@ -10,12 +10,33 @@ class DashboardConntroler extends Controller
 {
     public function dashboard()
     {
-        return Inertia::render('Dashboard', ['peopleInBuilding' => $this->getPeopleInBuilding(), 'people' => Person::all() ?? []]);
+        return Inertia::render('Dashboard', ['peopleCount' => $this->getPeopleAmount(), 'people' => Person::all() ?? [] , 'peopleCountInBuilding' => $this->getPeopleInBuilding()]);
+    }
+
+    public function inbuilding()
+    {
+        return Inertia::render('Inbuilding', ['peopleCount' => $this->getPeopleAmount(), 'people' => Person::all() ?? []]);
+    }
+
+    public function history()
+    {
+        return Inertia::render('History', ['peopleCount' => $this->getPeopleAmount(), 'people' => Person::all() ?? []]);
+    }
+
+    public function getPeopleAmount(): int
+    {
+        return Person::count() ?? 0;
     }
 
     public function getPeopleInBuilding(): int
     {
-        return Person::count() ?? 0;
+        $count = 0;
+        foreach(Person::all() as $person){
+            if($person->Left_at == '1970-01-01 00:00:00'){
+                $count++;
+            }
+        }
+        return $count;
     }
 
     public function addPerson(Request $request)
@@ -34,7 +55,7 @@ class DashboardConntroler extends Controller
         $Person->save();
         return redirect()->intended('/dashboard');
 
-        return Inertia::render('Dashboard', ['peopleInBuilding' => $this->getPeopleInBuilding() , 'people' => Person::all() ?? []]);
+        return Inertia::render('Dashboard', ['peopleCount' => $this->getPeopleAmount() , 'people' => Person::all() ?? []]);
     }
 
     public function leave(Request $request)
