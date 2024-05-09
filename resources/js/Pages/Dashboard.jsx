@@ -17,12 +17,11 @@ const Dashboard = () => {
     if(addPerson.first_name == "" || addPerson.last_name == "" || addPerson.sex == ""){
       setErrors(["All fields are required"])
     }else{
-      router.get('/dashboard/add', addPerson,{
+      router.post('/dashboard/add', addPerson,{
         forceFormData: true,
       })
       setErrors([])
       setAddPerson({first_name : "" , last_name : "" , sex : "" })
-      console.log(people)
     }
 
   }
@@ -58,7 +57,7 @@ const Dashboard = () => {
                 <option value="Helihopter">Helihopter</option>
               </select>
               <button type="submit" className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded max-sm:py-1 max-sm:px-2'>Add</button>
-              {errors}
+              {errorsJSX}
             </form>
             </div>
 

@@ -29,10 +29,8 @@ const Dashboard = () => {
       router.post('/dashboard/history/search', {search: search},{
         forceFormData: true,
       })
-      console.log(search)
       setErrors([])
       setSearch("")
-      console.log(people)
     }
   }
 

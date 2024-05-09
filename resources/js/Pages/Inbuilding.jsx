@@ -24,14 +24,13 @@ const Dashboard = () => {
   function handleSubmitSearch(e) {
     e.preventDefault()
     if(search == ""){
-        router.visit('/dashboard/history')
+        router.visit('/dashboard/inbuilding')
     }else{
       router.post('/dashboard/inbuilding/search', {search: search},{
         forceFormData: true,
       })
       setErrors([])
       setSearch("")
-      console.log(people)
     }
   }
 
