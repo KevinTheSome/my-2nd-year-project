@@ -18,6 +18,26 @@ class DashboardConntroler extends Controller
         return Inertia::render('Inbuilding', ['peopleCount' => $this->getPeopleAmount(), 'people' => Person::all() ?? [], 'peopleCountInBuilding' => $this->getPeopleInBuilding()]);
     }
 
+    public function inbuildingsearch(Request $request)
+    {
+        $request->validate([
+            'search' => 'required|max:255',
+        ]);
+
+        $people = Person::where('first_name', 'like', "%{$request->input('search')}%")->orWhere('last_name', 'LIKE', "%{$request->input('search')}%")->get();
+        return Inertia::render('Inbuilding', ['peopleCount' => $this->getPeopleAmount(), 'people' => $people ?? Person::all(), 'peopleCountInBuilding' => $this->getPeopleInBuilding()]);
+    }
+
+    public function historysearch(Request $request)
+    {
+        $request->validate([
+            'search' => 'required|max:255',
+        ]);
+        
+        $people = Person::where('first_name', 'like', "%{$request->input('search')}%")->orWhere('last_name', 'LIKE', "%{$request->input('search')}%")->get();
+        return Inertia::render('History', ['peopleCount' => $this->getPeopleAmount(), 'people' => $people ?? Person::all(), 'peopleCountInBuilding' => $this->getPeopleInBuilding()]);
+    }
+
     public function history()
     {
         return Inertia::render('History', ['peopleCount' => $this->getPeopleAmount(), 'people' => Person::all() ?? [], 'peopleCountInBuilding' => $this->getPeopleInBuilding()]);

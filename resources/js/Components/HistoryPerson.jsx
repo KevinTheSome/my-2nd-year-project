@@ -1,6 +1,5 @@
 import { router , Link } from '@inertiajs/react'
 function Person(props){
-    console.log(props.person)
     return(
         <div className="p-2 grid grid-cols-[1fr_1fr] grid-rows-2 w-99vw h-32 border border-black m-4">
 

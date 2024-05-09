@@ -17,7 +17,7 @@ const Dashboard = () => {
     if(addPerson.first_name == "" || addPerson.last_name == "" || addPerson.sex == ""){
       setErrors(["All fields are required"])
     }else{
-      router.post('/dashboard/add', addPerson,{
+      router.get('/dashboard/add', addPerson,{
         forceFormData: true,
       })
       setErrors([])
@@ -35,7 +35,7 @@ const Dashboard = () => {
 
   const errorsJSX = errors.map((error, key) => {
     return (
-      <p className='text-red-500 text-3xl'>{error}</p>
+      <p key={key} className='text-red-500 text-3xl'>{error}</p>
     )
   })
 

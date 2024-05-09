@@ -21,6 +21,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardConntroler::class, 'dashboard'])->name('dashboard');
     Route::get('/dashboard/inbuilding', [DashboardConntroler::class, 'inbuilding'])->name('inbuilding');
     Route::get('/dashboard/history', [DashboardConntroler::class, 'history'])->name('history');
+    Route::post('/dashboard/inbuilding/search', [DashboardConntroler::class, 'inbuildingsearch'])->name('inbuildingsearch');
+    Route::post('/dashboard/history/search', [DashboardConntroler::class, 'historysearch'])->name('historysearch');
     Route::post('/dashboard/add', [DashboardConntroler::class, 'addPerson'])->name('addPerson');
     Route::post('/dashboard/inbuilding', [DashboardConntroler::class, 'inbuilding'])->name('inbuilding');
     Route::post('/dashboard/leave', [DashboardConntroler::class, 'leave'])->name('leave');
