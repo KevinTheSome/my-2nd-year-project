@@ -15,12 +15,12 @@ class DashboardConntroler extends Controller
 
     public function inbuilding()
     {
-        return Inertia::render('Inbuilding', ['peopleCount' => $this->getPeopleAmount(), 'people' => Person::all() ?? []]);
+        return Inertia::render('Inbuilding', ['peopleCount' => $this->getPeopleAmount(), 'people' => Person::all() ?? [], 'peopleCountInBuilding' => $this->getPeopleInBuilding()]);
     }
 
     public function history()
     {
-        return Inertia::render('History', ['peopleCount' => $this->getPeopleAmount(), 'people' => Person::all() ?? []]);
+        return Inertia::render('History', ['peopleCount' => $this->getPeopleAmount(), 'people' => Person::all() ?? [], 'peopleCountInBuilding' => $this->getPeopleInBuilding()]);
     }
 
     public function getPeopleAmount(): int
@@ -55,7 +55,7 @@ class DashboardConntroler extends Controller
         $Person->save();
         return redirect()->intended('/dashboard');
 
-        return Inertia::render('Dashboard', ['peopleCount' => $this->getPeopleAmount() , 'people' => Person::all() ?? []]);
+        return Inertia::render('Dashboard', ['peopleCount' => $this->getPeopleAmount() , 'people' => Person::all() ?? [], 'peopleCountInBuilding' => $this->getPeopleInBuilding()]);
     }
 
     public function leave(Request $request)

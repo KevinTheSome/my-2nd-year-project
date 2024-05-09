@@ -16,7 +16,7 @@ const Dashboard = () => {
     return (
       <>
         <Head title="History" />
-        <div className='v-screen h-screen grid grid-cols-[256px_1fr]'>
+        <div className='v-screen h-screen grid max-sm:grid-cols-[64px_1fr] grid-cols-[256px_1fr]'>
           <Saidbar />
 
             <div>
