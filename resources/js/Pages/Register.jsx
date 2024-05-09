@@ -57,11 +57,11 @@ const Home = () => {
                                 <div className="flex items-center text-sm">
                                 <p>Not new here?</p>
                                 <Link href="/login" method="get" className=" text-indigo-300 underline cursor-pointer ml-1">Login</Link>
-                                <p className='text-red-500'>{errors.name ?? ''}</p>
-                                <p className='text-red-500'>{errors.email ?? ''}</p>
-                                <p className='text-red-500'>{errors.password ?? ''}</p>
                                 </div>
                             </div>
+                            <p className='text-red-500'>{errors.name ?? ''}</p>
+                            <p className='text-red-500'>{errors.email ?? ''}</p>
+                            <p className='text-red-500'>{errors.password ?? ''}</p>
                         </form>
                     </div>
                 </div>

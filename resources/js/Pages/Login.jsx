@@ -37,9 +37,9 @@ const Home = () => {
                                 <div className="flex items-center text-sm">
                                 <p>New here?</p>
                                 <Link href="/register" method="get" className=" text-indigo-300 underline cursor-pointer ml-1">Register</Link>
-                                <p className='text-red-500'>{errors.email ?? ''}</p>
                                 </div>
                             </div>
+                            <p className='text-red-500'>{errors.email ?? ''}</p>
                         </form>
                     </div>
                 </div>
