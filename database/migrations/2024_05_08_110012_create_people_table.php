@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('Left_at')->default(date('Y-m-d H:i:s', 0));
             $table->string('first_name');
             $table->string('last_name');
-            $table->enum('sex', ['Male','Femail','Transgender','Helihopter']);
+            $table->enum('sex', ['Male','Female','Transgender','Helihopter']);
         });
     }
 

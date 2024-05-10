@@ -52,7 +52,7 @@ const Dashboard = () => {
               <select name="sex" id="sex"  value={addPerson.sex} onChange={(e) => setAddPerson({ ...addPerson, sex: e.target.value })} required>
                 <option>Choose sex</option>
                 <option value="Male">Male</option>
-                <option value="Femail">Femail</option>
+                <option value="Female">Female</option>
                 <option value="Transgender">Transgender</option>
                 <option value="Helihopter">Helihopter</option>
               </select>
